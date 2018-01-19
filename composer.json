@@ -1,0 +1,41 @@
+{
+    "name": "superbig/craft-entry-instructions",
+    "description": "A simple fieldtype to add instructions",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "entry instructions"
+    ],
+    "support": {
+        "docs": "https://github.com/sjelfull/craft-entry-instructions/blob/master/README.md",
+        "issues": "https://github.com/sjelfull/craft-entry-instructions/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Superbig",
+            "homepage": "https://superbig.co"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "superbig\\entryinstructions\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Entry Instructions",
+        "handle": "entry-instructions",
+        "schemaVersion": "1.0.0",
+        "hasCpSettings": false,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/sjelfull/craft-entry-instructions/master/CHANGELOG.md",
+        "class": "superbig\\entryinstructions\\EntryInstructions"
+    }
+}
