@@ -22,7 +22,8 @@
         }
     ],
     "require": {
-        "craftcms/cms": "^3.0.0-RC1"
+        "craftcms/cms": "^3.0.0-RC1",
+        "sabberworm/php-css-parser": "^8.2.0"
     },
     "autoload": {
         "psr-4": {
