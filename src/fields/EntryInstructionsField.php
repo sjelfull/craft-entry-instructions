@@ -29,6 +29,8 @@ class EntryInstructionsField extends Field
 {
     // Public Properties
     // =========================================================================
+    
+    public $fieldCustomCss = '';
 
     // Static Methods
     // =========================================================================
@@ -39,6 +41,17 @@ class EntryInstructionsField extends Field
     public static function displayName (): string
     {
         return Craft::t('entry-instructions', 'Entry Instructions');
+    }
+
+
+    public function getSettingsHtml()
+    {
+        return Craft::$app->getView()->renderTemplate(
+            'entry-instructions/_components/fields/EntryInstructionsField_settings',
+            [
+                'field' => $this,
+            ]
+        );
     }
 
     /**
@@ -59,7 +72,21 @@ class EntryInstructionsField extends Field
                 'field'        => $this,
                 'id'           => $id,
                 'namespacedId' => $namespacedId,
+                'customCSS'    => $this->getAndParseCSS($id)
             ]
         );
+    }
+
+    private function getAndParseCSS($id) {
+        $settings = $this->getSettings();
+        $CssParser = new \Sabberworm\CSS\Parser($settings['fieldCustomCss']);
+        $parsedCss = $CssParser->parse();
+        foreach($parsedCss->getAllDeclarationBlocks() as $oBlock) {
+            foreach($oBlock->getSelectors() as $oSelector) {
+                //Loop over all selector parts (the comma-separated strings in a selector) and prepend the id
+                $oSelector->setSelector("#fields-{$id}-field .heading .instructions ".$oSelector->getSelector());
+            }
+        }
+        return $parsedCss->render();
     }
 }

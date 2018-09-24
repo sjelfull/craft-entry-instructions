@@ -1,0 +1,11 @@
+{% import "_includes/forms" as forms %}
+
+{{ forms.textAreaField({
+    label: 'Custom CSS',
+    instructions: 'Custom CSS, which must be valid',
+    rows: 16,
+    id: 'fieldCustomCss',
+    name: 'fieldCustomCss',
+    value: field['fieldCustomCss'],
+    errors: field.getErrors('fieldCustomCss')
+}) }}
