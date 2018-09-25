@@ -2,13 +2,14 @@
     "name": "superbig/craft-entry-instructions",
     "description": "A simple fieldtype to add instructions",
     "type": "craft-plugin",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "keywords": [
         "craft",
         "cms",
         "craftcms",
         "craft-plugin",
-        "entry instructions"
+        "entry instructions",
+        "fieldtype"
     ],
     "support": {
         "docs": "https://github.com/sjelfull/craft-entry-instructions/blob/master/README.md",
