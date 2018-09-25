@@ -34,7 +34,7 @@
     "extra": {
         "name": "Entry Instructions",
         "handle": "entry-instructions",
-        "schemaVersion": "1.0.2",
+        "schemaVersion": "1.0.0",
         "hasCpSettings": false,
         "hasCpSection": false,
         "changelogUrl": "https://raw.githubusercontent.com/sjelfull/craft-entry-instructions/master/CHANGELOG.md",
