@@ -80,4 +80,7 @@ class EntryInstructions extends Plugin
     // Protected Methods
     // =========================================================================
 
+    protected function createSettingsModel() {
+        return new \superbig\entryinstructions\models\Settings();
+    }
 }

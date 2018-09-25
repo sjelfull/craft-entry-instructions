@@ -72,21 +72,37 @@ class EntryInstructionsField extends Field
                 'field'        => $this,
                 'id'           => $id,
                 'namespacedId' => $namespacedId,
-                'customCSS'    => $this->getAndParseCSS($id)
+                'renderedCSS'  => $this->getAndParseCSS($id)
             ]
         );
     }
 
     private function getAndParseCSS($id) {
-        $settings = $this->getSettings();
-        $CssParser = new \Sabberworm\CSS\Parser($settings['fieldCustomCss']);
+        $outputCSS = '';
+        
+        // First we parse the defaults that get a different prepend string
+        $outerBoxCSS = \superbig\entryinstructions\EntryInstructions::getInstance()->getSettings()->outerBoxCSS;
+        $outputCSS .= $this->renderCSS($outerBoxCSS, "#fields-{$id}-field .heading ");
+
+        // Then we parse the rest of the defaults PLUS the field custom CSS if any
+        $mainCSS = \superbig\entryinstructions\EntryInstructions::getInstance()->getSettings()->mainCSS;
+        $mainCSS .= $this->getSettings()['fieldCustomCss'];
+        $outputCSS .= $this->renderCSS($mainCSS, "#fields-{$id}-field .heading .instructions ");
+
+        return $outputCSS;
+    }
+
+    private function renderCSS($data, $prependString) {
+        $CssParser = new \Sabberworm\CSS\Parser($data);
         $parsedCss = $CssParser->parse();
+
         foreach($parsedCss->getAllDeclarationBlocks() as $oBlock) {
             foreach($oBlock->getSelectors() as $oSelector) {
                 //Loop over all selector parts (the comma-separated strings in a selector) and prepend the id
-                $oSelector->setSelector("#fields-{$id}-field .heading .instructions ".$oSelector->getSelector());
+                $oSelector->setSelector($prependString.$oSelector->getSelector());
             }
         }
+
         return $parsedCss->render();
     }
 }

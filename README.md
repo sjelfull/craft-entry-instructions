@@ -26,7 +26,14 @@ To install the plugin, follow these instructions.
 
 Create a new Entry Instructions field with instructions, and add it to a field layout.
 
+You may add custom per-field CSS in the field settings; any CSS you add will be automatically scoped to the correct field.
+
 Instructions will be parsed with Markdown.
+
+## Overriding Global CSS
+
+You can override the global CSS by creating a file in your `config/` directory called `entry-instructions.php` and adding the appropriate strings.
+A sample can be found [here](entry-instructions.php.sample)
 
 ## Credits
 
