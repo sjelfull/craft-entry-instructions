@@ -2,7 +2,7 @@
     "name": "superbig/craft-entry-instructions",
     "description": "A simple fieldtype to add instructions",
     "type": "craft-plugin",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "keywords": [
         "craft",
         "cms",
