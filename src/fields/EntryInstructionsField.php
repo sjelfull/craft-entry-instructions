@@ -10,6 +10,8 @@
 
 namespace superbig\entryinstructions\fields;
 
+use craft\elements\MatrixBlock;
+use craft\fields\Matrix;
 use superbig\entryinstructions\EntryInstructions;
 use superbig\entryinstructions\assetbundles\entryinstructionsfieldfield\EntryInstructionsFieldFieldAsset;
 
@@ -29,7 +31,7 @@ class EntryInstructionsField extends Field
 {
     // Public Properties
     // =========================================================================
-    
+
     public $fieldCustomCss = '';
 
     // Static Methods
@@ -38,7 +40,7 @@ class EntryInstructionsField extends Field
     /**
      * @inheritdoc
      */
-    public static function displayName (): string
+    public static function displayName(): string
     {
         return Craft::t('entry-instructions', 'Entry Instructions');
     }
@@ -61,7 +63,7 @@ class EntryInstructionsField extends Field
     /**
      * @inheritdoc
      */
-    public function getInputHtml ($value, ElementInterface $element = null): string
+    public function getInputHtml($value, ElementInterface $element = null): string
     {
         // Get our id and namespace
         $id           = Craft::$app->getView()->formatInputId($this->handle);
@@ -76,34 +78,38 @@ class EntryInstructionsField extends Field
                 'field'        => $this,
                 'id'           => $id,
                 'namespacedId' => $namespacedId,
-                'renderedCSS'  => $this->getAndParseCSS($id)
+                'renderedCSS'  => $this->getAndParseCSS($id, $element),
             ]
         );
     }
 
-    private function getAndParseCSS($id) {
-        $outputCSS = '';
-        
+    private function getAndParseCSS($id)
+    {
+        $namespacedId = Craft::$app->getView()->namespaceInputId($id);
+        $fieldId      = "#{$namespacedId}-field";
+        $outputCSS    = '';
+
         // First we parse the defaults that get a different prepend string
         $outerBoxCSS = \superbig\entryinstructions\EntryInstructions::getInstance()->getSettings()->outerBoxCSS;
-        $outputCSS .= $this->renderCSS($outerBoxCSS, "#fields-{$id}-field .heading ");
+        $outputCSS   .= $this->renderCSS($outerBoxCSS, "{$fieldId} .heading ");
 
         // Then we parse the rest of the defaults PLUS the field custom CSS if any
-        $mainCSS = \superbig\entryinstructions\EntryInstructions::getInstance()->getSettings()->mainCSS;
-        $mainCSS .= $this->getSettings()['fieldCustomCss'];
-        $outputCSS .= $this->renderCSS($mainCSS, "#fields-{$id}-field .heading .instructions ");
+        $mainCSS   = \superbig\entryinstructions\EntryInstructions::getInstance()->getSettings()->mainCSS;
+        $mainCSS   .= $this->getSettings()['fieldCustomCss'];
+        $outputCSS .= $this->renderCSS($mainCSS, "{$fieldId} .heading .instructions ");
 
         return $outputCSS;
     }
 
-    private function renderCSS($data, $prependString) {
+    private function renderCSS($data, $prependString)
+    {
         $CssParser = new \Sabberworm\CSS\Parser($data);
         $parsedCss = $CssParser->parse();
 
-        foreach($parsedCss->getAllDeclarationBlocks() as $oBlock) {
-            foreach($oBlock->getSelectors() as $oSelector) {
+        foreach ($parsedCss->getAllDeclarationBlocks() as $oBlock) {
+            foreach ($oBlock->getSelectors() as $oSelector) {
                 //Loop over all selector parts (the comma-separated strings in a selector) and prepend the id
-                $oSelector->setSelector($prependString.$oSelector->getSelector());
+                $oSelector->setSelector($prependString . $oSelector->getSelector());
             }
         }
 

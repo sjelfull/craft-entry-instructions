@@ -8,6 +8,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Changed
 - Removed unnecessary content column so settings doesn't offer to translate the field
 
+## Fixed
+- Fixed CSS namespacing for Matrix and Neo blocks
+
 ## 1.0.4 - 2018-10-10
 ### Changed
 - Make CSS parser dependency more lenient
