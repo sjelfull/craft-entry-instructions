@@ -43,6 +43,10 @@ class EntryInstructionsField extends Field
         return Craft::t('entry-instructions', 'Entry Instructions');
     }
 
+    public static function hasContentColumn(): bool
+    {
+        return false;
+    }
 
     public function getSettingsHtml()
     {
