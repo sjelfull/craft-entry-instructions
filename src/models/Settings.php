@@ -63,7 +63,7 @@ EOS;
         h5 { font-size: 11px; }
         h6 { font-size:  9px; }
 
-        p { max-width: 70%; }
+        p { max-width: 100%; }
 
         a { text-decoration: underline; }
 EOM;
