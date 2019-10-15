@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.0.6 - 2019-10-15
+
+### Fixed
+- Fixed `p` max-width that caused unnecessary wrapping ([#11](https://github.com/sjelfull/craft-entry-instructions/issues/11))
+
 ## 1.0.5 - 2019-08-12
 ### Changed
 - Removed unnecessary content column so settings doesn't offer to translate the field
