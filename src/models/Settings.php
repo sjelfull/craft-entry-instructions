@@ -12,8 +12,6 @@ class Settings extends Model
     public $outerBoxCSS = <<<'EOS'
         .instructions {
             background-color: #f9fafa;
-            border-radius: 2px;
-            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .1);
             color: #53524f;
             font-family: 'HelveticaNeue', 'Helvetica Neue', 'Helvetica', sans-serif;
             font-size: 13px;
@@ -21,17 +19,13 @@ class Settings extends Model
             min-height: 30px;
             padding: 22px 24px 20px;
             position: relative;
-        }
 
-        .instructions:before {
-            background-color: #0d78f2;
-            border-radius: 2px 0 0 2px;
-            content: '';
-            height: 100%;
-            left: 0;
-            position: absolute;
-            top: 0;
-            width: 4px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: rgba(0, 0, 0, .1);
+            border-radius: 4px 2px 2px 4px ;
+            border-left-width: 4px;
+            border-left-color: #0d78f2;
         }
 EOS;
 
