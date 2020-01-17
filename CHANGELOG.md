@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.0.7 - 2020-01-17
+
+### Fixed
+- Remove :before CSS class to override styles
+
 ## 1.0.6 - 2019-10-15
 
 ### Fixed
