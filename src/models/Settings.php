@@ -16,7 +16,6 @@ class Settings extends Model
             font-family: 'HelveticaNeue', 'Helvetica Neue', 'Helvetica', sans-serif;
             font-size: 13px;
             line-height: 16px;
-            min-height: 30px;
             padding: 22px 24px 20px;
             position: relative;
 
