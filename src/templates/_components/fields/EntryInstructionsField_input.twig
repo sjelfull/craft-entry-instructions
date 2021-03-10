@@ -12,9 +12,12 @@
  * @since     2.0.0
  */
 #}
+<div class="instructions">
+    {{ include(template_from_string(field.instructions)) }}
+</div>
 <style type="text/css">
     /* This one declaration gets hardcoded */
-    #fields-{{ id }}-field .heading label {
+    #fields-{{ id }}-field .heading {
         display: none;
     }
 
